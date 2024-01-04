@@ -36,7 +36,7 @@ func (pq *PriorityQueue) Pop() any {
 }
 
 // NewPriorityQueue returns a PriorityQueue of Nodes with min heap property
-// based on a rune frequency map.
+// based on runeFrequency map.
 func NewPriorityQueue(runeFrequency map[rune]int) *PriorityQueue {
 	i := 0
 	pq := make(PriorityQueue, len(runeFrequency))
