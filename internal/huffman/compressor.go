@@ -41,7 +41,7 @@ func (c *Compressor) Compress() error {
 	pq := NewPriorityQueue(runesFrequency)
 	tree := NewHuffmanTree(pq)
 
-	err = writeHeader(tree, output)
+	err = writeHeader(tree.ToHeader(), output)
 	if err != nil {
 		return fmt.Errorf("error writing header: %v", err)
 	}
@@ -72,10 +72,8 @@ func getRunesFrequency(input io.Reader) map[rune]int {
 // writeHeader writes the length of the header and the serialized tree
 // separated by a control character to output. The length is useful to
 // know where the header ends in a future read.
-func writeHeader(tree *Node, output io.Writer) error {
-	serialized := tree.ToHeader()
+func writeHeader(serialized string, output io.Writer) error {
 	header := fmt.Sprintf("%d%s%s", len(serialized), EndOfHeaderLength, serialized)
-
 	_, err := output.Write([]byte(header))
 	if err != nil {
 		return err
