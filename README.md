@@ -42,11 +42,14 @@ diff test.txt original.txt
 
 ### Tests
 
-TBD
-
+```sh
+go test ./...
+```
 ### Benchmarks
 
-TBD
+```sh
+go test -bench=. -benchmem 
+```
 
 ## License
 
