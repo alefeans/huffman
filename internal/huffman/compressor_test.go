@@ -30,10 +30,26 @@ func TestCountCharsFrequency(t *testing.T) {
 
 func TestWriteHeader(t *testing.T) {
 	var buff bytes.Buffer
-	input := "serialized"
+	want := struct {
+		length string
+		input  string
+	}{
+		length: "10",
+		input:  "serialized",
+	}
 
-	err := writeHeader(input, &buff)
+	err := writeHeader(want.input, &buff)
 	if err != nil {
-		t.Errorf("got unexpected error with writeHeader(%s, %v)", input, buff)
+		t.Errorf("got unexpected error with writeHeader(%s, %v): %v", want.input, buff, err)
+	}
+
+	got := strings.Split(string(buff.Bytes()), EndOfHeaderLength)
+
+	if got[0] != want.length {
+		t.Errorf("got %s, want %s", got[0], want.length)
+	}
+
+	if got[1] != want.input {
+		t.Errorf("got %s, want %s", got[1], want.input)
 	}
 }
