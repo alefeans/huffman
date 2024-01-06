@@ -53,3 +53,21 @@ func TestWriteHeader(t *testing.T) {
 		t.Errorf("got %s, want %s", got[1], want.input)
 	}
 }
+
+func TestCompress(t *testing.T) {
+	defer removeFiles(compressed, "")
+
+	err := NewCompressor(original, compressed).Compress()
+	if err != nil {
+		t.Errorf("got unexpected error with NewCompressor(%s, %s).Compress(): %v", original, compressed, err)
+	}
+
+	numOfBytes, sameContent := haveSameContent(original, compressed)
+	if sameContent {
+		t.Errorf("compressed content is equal to original file")
+	}
+
+	if numOfBytes[0] >= numOfBytes[1] {
+		t.Errorf("compressed content is bigger than original file")
+	}
+}
