@@ -99,11 +99,10 @@ func TestDecompress(t *testing.T) {
 }
 
 func BenchmarkDecompress(b *testing.B) {
-	b.StopTimer()
 	defer removeFiles(compressed, decompressed)
 	NewCompressor(original, compressed).Compress()
 	d := NewDecompressor(compressed, decompressed)
-	b.StartTimer()
+	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
 		d.Decompress()

@@ -73,10 +73,9 @@ func TestCompress(t *testing.T) {
 }
 
 func BenchmarkCompress(b *testing.B) {
-	b.StopTimer()
 	defer removeFiles(compressed, "")
 	c := NewCompressor(original, compressed)
-	b.StartTimer()
+	b.ResetTimer()
 	
 	for i := 0; i < b.N; i++ {
 		c.Compress()
