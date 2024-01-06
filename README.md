@@ -43,7 +43,35 @@ diff test.txt original.txt
 ### Tests
 
 ```sh
-go test ./...
+go test -v ./...
+?       github.com/alefeans/huffman     [no test files]
+?       github.com/alefeans/huffman/internal/bit        [no test files]
+=== RUN   TestCountCharsFrequency
+--- PASS: TestCountCharsFrequency (0.00s)
+=== RUN   TestWriteHeader
+--- PASS: TestWriteHeader (0.00s)
+=== RUN   TestCompress
+--- PASS: TestCompress (0.03s)
+=== RUN   TestReadHeader
+--- PASS: TestReadHeader (0.00s)
+=== RUN   TestDecompress
+--- PASS: TestDecompress (0.04s)
+=== RUN   TestPriorityQueue
+--- PASS: TestPriorityQueue (0.00s)
+=== RUN   TestNewHuffmanTree
+--- PASS: TestNewHuffmanTree (0.00s)
+=== RUN   TestToHeader
+--- PASS: TestToHeader (0.00s)
+=== RUN   TestFromHeader
+--- PASS: TestFromHeader (0.00s)
+=== RUN   TestToAndFromHeader
+--- PASS: TestToAndFromHeader (0.00s)
+=== RUN   TestToLookup
+--- PASS: TestToLookup (0.00s)
+=== RUN   TestToReverseLookup
+--- PASS: TestToReverseLookup (0.00s)
+PASS
+ok      github.com/alefeans/huffman/internal/huffman    0.221s
 ```
 ### Benchmarks
 
