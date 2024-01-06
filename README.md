@@ -44,8 +44,6 @@ diff test.txt original.txt
 
 ```sh
 go test -v ./...
-?       github.com/alefeans/huffman     [no test files]
-?       github.com/alefeans/huffman/internal/bit        [no test files]
 === RUN   TestCountCharsFrequency
 --- PASS: TestCountCharsFrequency (0.00s)
 === RUN   TestWriteHeader
@@ -77,8 +75,6 @@ ok      github.com/alefeans/huffman/internal/huffman    0.221s
 
 ```sh
 go test ./... -bench=. -benchmem
-?       github.com/alefeans/huffman     [no test files]
-?       github.com/alefeans/huffman/internal/bit        [no test files]
 goos: darwin
 goarch: arm64
 pkg: github.com/alefeans/huffman/internal/huffman
