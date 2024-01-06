@@ -76,7 +76,15 @@ ok      github.com/alefeans/huffman/internal/huffman    0.221s
 ### Benchmarks
 
 ```sh
-go test -bench=. -benchmem 
+go test ./... -bench=. -benchmem
+?       github.com/alefeans/huffman     [no test files]
+?       github.com/alefeans/huffman/internal/bit        [no test files]
+goos: darwin
+goarch: arm64
+pkg: github.com/alefeans/huffman/internal/huffman
+BenchmarkCompress-10                  57          18243634 ns/op           48923 B/op             461 allocs/op
+BenchmarkDecompress-10               130           9151706 ns/op          405467 B/op           81198 allocs/op
+PASS
 ```
 
 ## License

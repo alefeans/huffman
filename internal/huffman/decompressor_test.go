@@ -97,3 +97,15 @@ func TestDecompress(t *testing.T) {
 		t.Errorf("decompressed content is different from original file")
 	}
 }
+
+func BenchmarkDecompress(b *testing.B) {
+	b.StopTimer()
+	defer removeFiles(compressed, decompressed)
+	NewCompressor(original, compressed).Compress()
+	d := NewDecompressor(compressed, decompressed)
+	b.StartTimer()
+
+	for i := 0; i < b.N; i++ {
+		d.Decompress()
+	}
+}

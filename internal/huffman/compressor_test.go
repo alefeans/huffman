@@ -71,3 +71,14 @@ func TestCompress(t *testing.T) {
 		t.Errorf("compressed content is bigger than original file")
 	}
 }
+
+func BenchmarkCompress(b *testing.B) {
+	b.StopTimer()
+	defer removeFiles(compressed, "")
+	c := NewCompressor(original, compressed)
+	b.StartTimer()
+	
+	for i := 0; i < b.N; i++ {
+		c.Compress()
+	}
+}
