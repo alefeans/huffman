@@ -125,7 +125,7 @@ func deserialize(serialized *[]string) (*Node, error) {
 //	   3
 //	  0  1
 //	 A    8
-//		 0  1
+//           0  1
 //	    C    D
 //
 // Becomes:
